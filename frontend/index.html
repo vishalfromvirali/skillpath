@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SkillPath — Career Graph Explorer</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>SkillPath</span>
+      </div>
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="explore">Explore</button>
+        <button class="tab" data-tab="path">Career Path</button>
+        <button class="tab" data-tab="gap">Skill Gap</button>
+        <button class="tab" data-tab="mentors">Find Mentors</button>
+      </nav>
+      <div id="statusPill" class="status-pill status-checking">Checking database…</div>
+    </header>
+
+    <main>
+      <!-- EXPLORE TAB -->
+      <section class="panel active" id="panel-explore">
+        <div class="panel-header">
+          <h1>Explore the graph</h1>
+          <p>Pick a job or a skill to see how it connects to everything else — required skills, courses that teach them, and career-ladder neighbors.</p>
+        </div>
+        <div class="controls">
+          <label>
+            Job
+            <select id="exploreJobSelect"><option value="">Loading jobs…</option></select>
+          </label>
+          <label>
+            Skill
+            <select id="exploreSkillSelect"><option value="">Loading skills…</option></select>
+          </label>
+        </div>
+        <div class="graph-card">
+          <div id="exploreGraph" class="graph-canvas"></div>
+          <div id="exploreEmpty" class="empty-state">Select a job or a skill above to visualize its connections.</div>
+        </div>
+        <div class="legend">
+          <span><i class="dot dot-job"></i> Job</span>
+          <span><i class="dot dot-skill"></i> Skill</span>
+          <span><i class="dot dot-course"></i> Course</span>
+        </div>
+      </section>
+
+      <!-- CAREER PATH TAB -->
+      <section class="panel" id="panel-path">
+        <div class="panel-header">
+          <h1>Find a career path</h1>
+          <p>See the shortest realistic progression from one role to another, hop by hop.</p>
+        </div>
+        <div class="controls">
+          <label>
+            From role
+            <select id="pathFrom"><option value="">Loading jobs…</option></select>
+          </label>
+          <label>
+            To role
+            <select id="pathTo"><option value="">Loading jobs…</option></select>
+          </label>
+          <button id="pathSubmit" class="primary-btn">Find path</button>
+        </div>
+        <div id="pathResult" class="result-card"></div>
+      </section>
+
+      <!-- SKILL GAP TAB -->
+      <section class="panel" id="panel-gap">
+        <div class="panel-header">
+          <h1>Skill gap analysis</h1>
+          <p>Compare a person's current skills against a target role, and see what courses would close the gap.</p>
+        </div>
+        <div class="controls">
+          <label>
+            Person
+            <select id="gapPerson"><option value="">Loading people…</option></select>
+          </label>
+          <label>
+            Target role
+            <select id="gapJob"><option value="">Loading jobs…</option></select>
+          </label>
+          <button id="gapSubmit" class="primary-btn">Analyze</button>
+        </div>
+        <div id="gapResult" class="result-card"></div>
+      </section>
+
+      <!-- MENTORS TAB -->
+      <section class="panel" id="panel-mentors">
+        <div class="panel-header">
+          <h1>Find mentors</h1>
+          <p>Find people already working the role you want, ranked by how many skills you already share with them.</p>
+        </div>
+        <div class="controls">
+          <label>
+            Person
+            <select id="mentorPerson"><option value="">Loading people…</option></select>
+          </label>
+          <label>
+            Target role
+            <select id="mentorJob"><option value="">Loading jobs…</option></select>
+          </label>
+          <button id="mentorSubmit" class="primary-btn">Find mentors</button>
+        </div>
+        <div id="mentorResult" class="result-card"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

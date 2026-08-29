@@ -1,0 +1,20 @@
+{
+  "name": "skillpath-backend",
+  "version": "1.0.0",
+  "description": "SkillPath API — a career progression & skill-gap graph explorer, backed by CognoDB (openCypher over Bolt).",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node seed/seed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "neo4j-driver": "^5.23.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
